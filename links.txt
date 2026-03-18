@@ -1,0 +1,22 @@
+Repos:
+
+1- Repo ( Landing Page ) : https://github.com/mahmoud112001/Hangman_web_project
+2- Repo ( version 1) : https://github.com/mahmoud112001/Hangman_web_project/tree/main/v1 
+3- Repo ( version 2) : https://github.com/mahmoud112001/Hangman_web_project/tree/main/v2 
+
+
+deployments:
+
+1- deployment ( Landing Page) : https://mahmoud112001.github.io/Hangman_web_project
+2- deployment ( Version 1) : https://mahmoud112001.github.io/Hangman_web_project/v1/index.html
+3- deployment ( Version 2) : https://mahmoud112001.github.io/Hangman_web_project/v2/index.html
+
+Recordes:
+
+1- Rec ( version 1 ) : https://screenrec.com/share/ejBlGYxAvo
+2- Rec ( version 2 ) : https://screenrec.com/share/KYlEisvpGa
+
+personal links:
+
+1- Linkedin :https://www.linkedin.com/in/mahmoud-awad-795b02203/
+2- Github :https://github.com/mahmoud112001
