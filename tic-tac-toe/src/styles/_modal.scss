@@ -1,0 +1,149 @@
+// ══════════════════════════════════════════════════
+// MODAL — Result dialog overlay
+// ══════════════════════════════════════════════════
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  @include flex-center;
+  padding: $space-6;
+  animation: modalIn 0.3s ease both;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba($color-bg, 0.85);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+  }
+
+  &__card {
+    @include flex-column-center;
+    @include card-glass;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+    padding: $space-10 $space-8;
+    gap: $space-5;
+    box-shadow: $shadow-lg;
+    animation: cardBounceIn 0.4s $transition-bounce both;
+
+    // Top accent gradient
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 20%; right: 20%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, $color-x, $color-o, transparent);
+      border-radius: $radius-sm;
+    }
+  }
+
+  &__icon {
+    font-size: $text-4xl;
+    animation: iconDrop 0.5s $transition-bounce 0.1s both;
+  }
+
+  &__title {
+    font-size: $text-2xl;
+    font-weight: $weight-black;
+    letter-spacing: -0.02em;
+    text-align: center;
+    line-height: 1.1;
+
+    &--x    { color: $color-x; }
+    &--o    { color: $color-o; }
+    &--draw { color: $color-draw; }
+    &--win  { color: $color-win; }
+  }
+
+  &__message {
+    font-size: $text-sm;
+    color: $color-text-muted;
+    text-align: center;
+    font-family: $font-mono;
+  }
+
+  // Mini score snapshot inside modal
+  &__score-snap {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-4 $space-6;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    width: 100%;
+  }
+
+  &__score-item {
+    @include flex-column-center;
+    flex: 1;
+    gap: $space-1;
+  }
+
+  &__score-label {
+    font-size: $text-xs;
+    color: $color-text-muted;
+    font-family: $font-mono;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  &__score-value {
+    font-size: $text-xl;
+    font-weight: $weight-black;
+    color: $color-text;
+  }
+
+  &__actions {
+    @include flex-column;
+    gap: $space-3;
+    width: 100%;
+  }
+}
+
+// ── Modal action buttons ──────────────────────────
+.btn-modal {
+  @include btn-base;
+  width: 100%;
+  padding: $space-4;
+  font-size: $text-base;
+  border-radius: $radius-md;
+
+  &--primary {
+    background: linear-gradient(135deg, $color-x, darken($color-x, 12%));
+    color: $color-bg;
+    font-weight: $weight-bold;
+    box-shadow: $shadow-x;
+
+    &:hover:not(:disabled) {
+      box-shadow: $shadow-x, 0 8px 24px rgba($color-x, 0.3);
+      transform: translateY(-2px);
+    }
+  }
+
+  &--secondary {
+    background: $color-surface-2;
+    border: 1px solid $color-border;
+    color: $color-text;
+
+    &:hover:not(:disabled) {
+      background: $color-surface-3;
+      border-color: $color-border-light;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    border: 1px solid $color-border;
+    color: $color-text-muted;
+
+    &:hover:not(:disabled) {
+      border-color: $color-border-light;
+      color: $color-text;
+    }
+  }
+}
