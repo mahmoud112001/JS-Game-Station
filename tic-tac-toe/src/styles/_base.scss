@@ -1,0 +1,50 @@
+// ══════════════════════════════════════════════════
+// BASE — Root defaults, body, typography scale
+// ══════════════════════════════════════════════════
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --color-x:    #{$color-x};
+  --color-o:    #{$color-o};
+  --color-win:  #{$color-win};
+  --color-draw: #{$color-draw};
+}
+
+body {
+  background-color: $color-bg;
+  color: $color-text;
+  font-family: $font-sans;
+  font-weight: $weight-normal;
+  font-size: $text-base;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+// ── Scrollbar ─────────────────────────────────────
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: $color-bg;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-border;
+  border-radius: $radius-full;
+}
+
+// ── Selection ─────────────────────────────────────
+::selection {
+  background: $color-x-dim;
+  color: $color-x;
+}
+
+// ── Utility: hidden ───────────────────────────────
+.hidden {
+  display: none !important;
+}
+
+// ── Utility: visually hidden ──────────────────────
+.sr-only {
+  @include visually-hidden;
+}
