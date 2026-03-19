@@ -1,0 +1,87 @@
+// ══════════════════════════════════════════════════
+// SCORE — Scoreboard panel and score cards
+// ══════════════════════════════════════════════════
+
+.scoreboard {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: $space-3;
+  width: 100%;
+}
+
+.score-card {
+  @include flex-column-center;
+  @include card($color-surface-2, $color-border);
+
+  padding: $space-4 $space-3;
+  gap: $space-1;
+  position: relative;
+  overflow: hidden;
+  transition: border-color $transition-base, box-shadow $transition-base;
+
+  // Colored top bar
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: $radius-sm $radius-sm 0 0;
+  }
+
+  &__label {
+    font-size: $text-xs;
+    color: $color-text-muted;
+    font-family: $font-mono;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  &__value {
+    font-size: $text-3xl;
+    font-weight: $weight-black;
+    line-height: 1;
+    transition: all $transition-bounce;
+
+    &.score-bump {
+      animation: scoreBump 0.4s $transition-bounce;
+    }
+  }
+
+  &__symbol {
+    font-size: $text-xs;
+    opacity: 0.4;
+    font-weight: $weight-bold;
+  }
+
+  // ── X variant ─────────────────────────────────
+  &--x {
+    &::before { background: $color-x; }
+    .score-card__value { color: $color-x; }
+    .score-card__symbol { color: $color-x; }
+
+    &.score-card--active {
+      border-color: rgba($color-x, 0.4);
+      box-shadow: 0 4px 16px rgba($color-x, 0.1);
+    }
+  }
+
+  // ── O variant ─────────────────────────────────
+  &--o {
+    &::before { background: $color-o; }
+    .score-card__value { color: $color-o; }
+    .score-card__symbol { color: $color-o; }
+
+    &.score-card--active {
+      border-color: rgba($color-o, 0.4);
+      box-shadow: 0 4px 16px rgba($color-o, 0.1);
+    }
+  }
+
+  // ── Draw variant ──────────────────────────────
+  &--draw {
+    &::before { background: $color-draw; }
+    .score-card__value { color: $color-draw; }
+    .score-card__symbol { color: $color-draw; }
+    padding: $space-3;
+  }
+}
