@@ -1,0 +1,230 @@
+// ══════════════════════════════════════════════════
+// COMPONENTS — Buttons, mode cards, diff selectors,
+//              turn indicator, controls
+// ══════════════════════════════════════════════════
+
+// ── Mode buttons ──────────────────────────────────
+.mode-btn {
+  @include btn-base;
+  @include flex-column-center;
+  @include card($color-surface-2, $color-border);
+  @include lift-on-hover(-4px);
+
+  padding: $space-6 $space-4;
+  gap: $space-2;
+  position: relative;
+  overflow: hidden;
+
+  // Accent line at top
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: $color-border;
+    transition: background $transition-base;
+  }
+
+  &__icon  { font-size: $text-xl; }
+  &__text  { font-size: $text-md; font-weight: $weight-bold; color: $color-text; }
+  &__sub   { font-size: $text-xs; color: $color-text-muted; font-family: $font-mono; }
+
+  &:hover:not(.mode-btn--active) {
+    border-color: $color-border-light;
+    &::before { background: $color-border-light; }
+  }
+
+  &--active {
+    @include card($color-surface-3, $color-x);
+    @include glow($color-x, 0.6);
+
+    &::before { background: $color-x; }
+    .mode-btn__text { color: $color-x; }
+    .mode-btn__sub  { color: rgba($color-x, 0.7); }
+  }
+}
+
+// ── Difficulty buttons ────────────────────────────
+.diff-btn {
+  @include btn-base;
+  @include flex-column-center;
+  @include card($color-surface-2, $color-border);
+
+  padding: $space-4 $space-3;
+  gap: $space-1;
+  position: relative;
+  overflow: hidden;
+  transition: all $transition-base;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    transition: background $transition-base;
+  }
+
+  &__level { font-size: $text-sm; font-weight: $weight-bold; color: $color-text; }
+  &__desc  { font-size: $text-xs; color: $color-text-muted; font-family: $font-mono; }
+
+  &:hover:not(.diff-btn--active) {
+    border-color: $color-border-light;
+    transform: translateY(-2px);
+  }
+
+  &--active {
+    background: $color-surface-3;
+
+    .diff-btn__level { color: $color-win; }
+    .diff-btn__desc  { color: rgba($color-win, 0.7); }
+    border-color: $color-win;
+    &::after { background: $color-win; }
+  }
+}
+
+// ── Start button ──────────────────────────────────
+.btn-start {
+  @include btn-base;
+  @include lift-on-hover(-3px);
+
+  width: 100%;
+  padding: $space-5 $space-8;
+  font-size: $text-md;
+  font-weight: $weight-bold;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, $color-x 0%, darken($color-x, 12%) 100%);
+  color: $color-bg;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-x;
+  position: relative;
+  overflow: hidden;
+
+  // Shimmer overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; right: 100%; bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.5s ease, right 0.5s ease;
+  }
+
+  &:hover::before {
+    left: 100%;
+    right: -100%;
+  }
+
+  &:hover:not(:disabled) {
+    box-shadow: $shadow-x, 0 12px 32px rgba($color-x, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &__arrow {
+    font-size: $text-lg;
+    transition: transform $transition-base;
+  }
+
+  &:hover &__arrow {
+    transform: translateX(4px);
+  }
+}
+
+// ── Control buttons ───────────────────────────────
+.btn-control {
+  @include btn-base;
+  padding: $space-3 $space-5;
+  font-size: $text-sm;
+  border-radius: $radius-md;
+
+  &--secondary {
+    background: $color-surface-2;
+    border: 1px solid $color-border;
+    color: $color-text;
+
+    &:hover:not(:disabled) {
+      background: $color-surface-3;
+      border-color: $color-border-light;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    border: 1px solid $color-border;
+    color: $color-text-muted;
+
+    &:hover:not(:disabled) {
+      border-color: $color-border-light;
+      color: $color-text;
+    }
+  }
+
+  &--danger {
+    background: $color-danger-dim;
+    border: 1px solid rgba($color-danger, 0.3);
+    color: $color-danger;
+
+    &:hover:not(:disabled) {
+      background: rgba($color-danger, 0.2);
+      border-color: $color-danger;
+    }
+  }
+}
+
+// ── Turn indicator ────────────────────────────────
+.turn-indicator {
+  @include flex-center;
+  gap: $space-3;
+  padding: $space-3 $space-6;
+  background: $color-surface-2;
+  border: 1px solid $color-border;
+  border-radius: $radius-full;
+  min-width: 240px;
+  transition: all $transition-base;
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $color-x;
+    box-shadow: 0 0 8px $color-x;
+    transition: all $transition-base;
+    animation: dotPulse 1.5s ease-in-out infinite;
+
+    &--o {
+      background: $color-o;
+      box-shadow: 0 0 8px $color-o;
+    }
+
+    &--thinking {
+      background: $color-text-muted;
+      box-shadow: none;
+      animation: dotBlink 0.8s ease-in-out infinite;
+    }
+  }
+
+  &__text {
+    font-size: $text-sm;
+    font-weight: $weight-medium;
+    color: $color-text;
+    font-family: $font-mono;
+    letter-spacing: 0.04em;
+  }
+
+  // State variants
+  &--x {
+    border-color: rgba($color-x, 0.35);
+    background: rgba($color-x, 0.06);
+  }
+
+  &--o {
+    border-color: rgba($color-o, 0.35);
+    background: rgba($color-o, 0.06);
+  }
+
+  &--thinking {
+    border-color: $color-border;
+    background: $color-surface-2;
+  }
+}
