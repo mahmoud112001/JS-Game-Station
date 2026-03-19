@@ -1,0 +1,146 @@
+// ══════════════════════════════════════════════════
+// BOARD — 3x3 grid, cells, X/O marks, states
+// ══════════════════════════════════════════════════
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, $cell-size);
+  grid-template-rows: repeat(3, $cell-size);
+  gap: $cell-gap;
+  padding: $space-4;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-lg;
+  position: relative;
+  z-index: $z-board;
+
+  // ── Cell ────────────────────────────────────────
+  &__cell {
+    @include flex-center;
+    @include btn-base;
+    @include focus-ring;
+
+    width: $cell-size;
+    height: $cell-size;
+    background: $color-surface-2;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    font-size: $text-4xl;
+    font-weight: $weight-black;
+    color: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition:
+      background $transition-base,
+      border-color $transition-base,
+      transform $transition-fast,
+      box-shadow $transition-base;
+
+    // Hover shimmer overlay
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity $transition-base;
+    }
+
+    &:hover:not(.board__cell--x):not(.board__cell--o):not(:disabled) {
+      border-color: $color-border-light;
+      background: $color-surface-3;
+      transform: scale(0.97);
+
+      &::before {
+        background: radial-gradient(circle at center, rgba($color-text, 0.04), transparent);
+        opacity: 1;
+      }
+    }
+
+    &:active:not(.board__cell--x):not(.board__cell--o):not(:disabled) {
+      transform: scale(0.93);
+    }
+
+    // ── Filled states ──────────────────────────────
+
+    &--x {
+      color: $color-x;
+      background: $color-x-dim;
+      border-color: rgba($color-x, 0.3);
+      cursor: not-allowed;
+      animation: cellReveal 0.3s $transition-bounce;
+
+      &::after {
+        content: '✕';
+        position: absolute;
+        font-size: $text-4xl;
+        font-weight: $weight-black;
+        color: $color-x;
+        filter: drop-shadow(0 0 8px rgba($color-x, 0.5));
+      }
+    }
+
+    &--o {
+      color: $color-o;
+      background: $color-o-dim;
+      border-color: rgba($color-o, 0.3);
+      cursor: not-allowed;
+      animation: cellReveal 0.3s $transition-bounce;
+
+      &::after {
+        content: '○';
+        position: absolute;
+        font-size: $text-4xl;
+        font-weight: $weight-black;
+        color: $color-o;
+        filter: drop-shadow(0 0 8px rgba($color-o, 0.5));
+      }
+    }
+
+    // ── Winner highlight ───────────────────────────
+    &--winner {
+      background: $color-win-dim !important;
+      border-color: $color-win !important;
+      box-shadow: $shadow-win;
+      animation: winnerPulse 0.5s ease forwards, winnerGlow 1.5s ease-in-out 0.5s infinite alternate;
+
+      &.board__cell--x::after { color: $color-win; filter: drop-shadow(0 0 12px rgba($color-win, 0.7)); }
+      &.board__cell--o::after { color: $color-win; filter: drop-shadow(0 0 12px rgba($color-win, 0.7)); }
+    }
+
+    // ── Draw state ────────────────────────────────
+    &--draw {
+      opacity: 0.5;
+      animation: drawFade 0.4s ease forwards;
+    }
+
+    // ── Disabled (game over, no hover) ────────────
+    &--disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}
+
+// ── Hover preview (X/O ghost on hover) ───────────
+.board:not(.board--locked) {
+  .board__cell:not(.board__cell--x):not(.board__cell--o):hover {
+    &::after {
+      content: attr(data-hover);
+      position: absolute;
+      font-size: $text-3xl;
+      font-weight: $weight-black;
+      opacity: 0.15;
+    }
+  }
+}
+
+// Locked board state (during CPU turn or game over)
+.board--locked {
+  .board__cell:not(.board__cell--x):not(.board__cell--o) {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
