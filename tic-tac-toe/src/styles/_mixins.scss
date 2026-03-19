@@ -1,0 +1,121 @@
+// ══════════════════════════════════════════════════
+// MIXINS — Reusable patterns. Import variables first.
+// ══════════════════════════════════════════════════
+
+// ── Flexbox shortcuts ─────────────────────────────
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// ── Card surface ──────────────────────────────────
+@mixin card($bg: $color-surface, $border: $color-border) {
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+}
+
+@mixin card-glass {
+  background: rgba($color-surface-2, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+}
+
+// ── Button base ───────────────────────────────────
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  font-family: $font-sans;
+  font-weight: $weight-medium;
+  font-size: $text-base;
+  transition: all $transition-base;
+  user-select: none;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-x;
+    outline-offset: 3px;
+  }
+}
+
+// ── Focus ring ────────────────────────────────────
+@mixin focus-ring($color: $color-x) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 3px;
+  }
+}
+
+// ── Glow effect ───────────────────────────────────
+@mixin glow($color, $intensity: 1) {
+  box-shadow: 0 0 #{16px * $intensity} rgba($color, 0.3 * $intensity),
+              0 0 #{32px * $intensity} rgba($color, 0.15 * $intensity);
+}
+
+// ── Text mono tag ─────────────────────────────────
+@mixin mono-tag {
+  font-family: $font-mono;
+  font-size: $text-xs;
+  color: $color-text-muted;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+// ── Responsive breakpoints ────────────────────────
+@mixin respond-to($bp) {
+  @if $bp == sm {
+    @media (max-width: #{$bp-sm}) { @content; }
+  } @else if $bp == md {
+    @media (max-width: #{$bp-md}) { @content; }
+  } @else if $bp == lg {
+    @media (max-width: #{$bp-lg}) { @content; }
+  }
+}
+
+// ── Visually hidden (accessible) ──────────────────
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+// ── Surface hover lift ────────────────────────────
+@mixin lift-on-hover($amount: -3px) {
+  transition: transform $transition-base, box-shadow $transition-base;
+  &:hover:not(:disabled) {
+    transform: translateY($amount);
+  }
+}
