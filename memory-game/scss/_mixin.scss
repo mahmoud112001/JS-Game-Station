@@ -1,16 +1,71 @@
+// ══════════════════════════════════════════════════
+// _mixin.scss
+// Reusable SCSS patterns.
+// Import _variables first so tokens are available.
+// ══════════════════════════════════════════════════
+
+// ── Layout ─────────────────────────────────────────
 @mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@mixin glass-panel {
-    background: $glass-color;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-@mixin neon-shadow($color) {
-    box-shadow: 0 0 10px $color, 0 0 20px rgba($color, 0.5);
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// ── Surfaces ───────────────────────────────────────
+
+/// Glass card panel — subtle frosted look.
+@mixin glass-panel($bg: $bg-glass) {
+  background: $bg;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: $radius-lg;
+}
+
+/// Solid surface panel.
+@mixin surface($bg: $bg-surface) {
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+}
+
+// ── Glow effects ───────────────────────────────────
+
+/// Drop a neon glow of any colour.
+/// Usage: @include neon-glow($cyan);
+@mixin neon-glow($color, $intensity: 1) {
+  box-shadow:
+    0 0 #{8px  * $intensity} $color,
+    0 0 #{20px * $intensity} rgba($color, 0.4);
+}
+
+/// Text glow.
+@mixin text-glow($color) {
+  text-shadow: 0 0 8px $color, 0 0 20px rgba($color, 0.5);
+}
+
+// ── Responsive ─────────────────────────────────────
+
+@mixin mobile { @media (max-width: 640px)  { @content; } }
+@mixin tablet { @media (max-width: 960px)  { @content; } }
+
+// ── Focus ring ─────────────────────────────────────
+
+@mixin focus-ring($color: $cyan) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 3px;
+  }
 }
