@@ -29,6 +29,7 @@
   --accent-blue:    #00d4ff;
   --accent-yellow:  #f7df1e;
   --accent-green:   #39ff14;
+  --accent-purple:  #9d00ff;
 }
 
 /* ── Reset ───────────────────────────────────────── */
@@ -221,7 +222,7 @@ body:has(a:hover) .cursor-dot { background: var(--yellow); }
 /* ══ GAMES GRID ══════════════════════════════════ */
 .games-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   width: 100%;
   animation: riseUp 0.9s 0.2s ease both;
@@ -252,6 +253,7 @@ body:has(a:hover) .cursor-dot { background: var(--yellow); }
 .game-card[data-color="blue"]   { --c: var(--cyan);   }
 .game-card[data-color="yellow"] { --c: var(--yellow); }
 .game-card[data-color="green"]  { --c: var(--green);  }
+.game-card[data-color="purple"] { --c: var(--purple); }
 
 .game-card::before {
   content: '';
@@ -582,7 +584,7 @@ body:has(a:hover) .cursor-dot { background: var(--yellow); }
 .fc-bracket { color:var(--yellow); opacity:0.4; }
 
 /* ══ RESPONSIVE ════════════════════════════════════ */
-@media (max-width:960px)  { .games-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width:1200px) { .games-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width:640px)  {
   .games-grid { grid-template-columns: 1fr; }
   .site-title { font-size: clamp(1.5rem,10vw,3rem); }
@@ -611,3 +613,125 @@ body:has(a:hover) .cursor-dot { background: var(--yellow); }
 /* ── Preview label fades on hover ── */
 .game-card:hover .preview-label { opacity: 0; }
 .preview-label { transition: opacity 0.3s; }
+
+/* ══ MEMORY MATRIX PREVIEW ═══════════════════════ */
+.preview-memory {
+  background: linear-gradient(160deg, #0d0814 0%, #130d1f 100%);
+}
+.mem-anim {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+}
+.game-card:hover .mem-anim { transform: scale(1.25); }
+
+.mem-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 30px) !important;
+  grid-template-rows: repeat(3, 30px) !important;
+  gap: 4px !important;
+}
+.mem-card {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+.mem-card.is-back {
+  background: linear-gradient(135deg, #1a1030, #24193f);
+  border: 1px solid rgba(157,0,255,0.35);
+  color: rgba(157,0,255,0.5);
+  font-family: var(--ff-head);
+  font-weight: 900;
+  font-size: 0.65rem;
+}
+.mem-card.is-face {
+  background: rgba(157,0,255,0.08);
+  border: 1px solid rgba(157,0,255,0.22);
+  font-size: 0.85rem;
+}
+.mem-card.is-face.matched {
+  background: rgba(57,255,20,0.14);
+  border: 1px solid rgba(57,255,20,0.45);
+  animation: memGlow 1.4s ease-in-out infinite alternate;
+}
+@keyframes memGlow {
+  from { box-shadow: none; }
+  to   { box-shadow: 0 0 10px rgba(57,255,20,0.55); }
+}
+.mem-status {
+  font-family: var(--ff-head);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--green);
+  text-shadow: 0 0 8px var(--green);
+  animation: statusPulse 1.5s ease-in-out infinite;
+}
+
+/* ══ INSTRUCTORS SECTION ═════════════════════════ */
+.instructors-block {
+  width: 100%;
+  padding: 18px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.instr-label {
+  font-family: var(--ff-mono);
+  font-size: 0.6rem;
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  opacity: 0.7;
+}
+
+.instr-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 16px;
+}
+
+.instr-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.instr-subject {
+  font-family: var(--ff-mono);
+  font-size: 0.5rem;
+  color: var(--yellow);
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+}
+
+.instr-name {
+  font-family: var(--ff-mono);
+  font-size: 0.62rem;
+  color: var(--text);
+  letter-spacing: 0.05em;
+}
+
+.instr-sep {
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding-top: 8px;
+}
+
+@media (max-width: 640px) {
+  .instr-row { flex-direction: column; gap: 10px; }
+  .instr-sep { display: none; }
+}
