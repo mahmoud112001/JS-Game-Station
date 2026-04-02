@@ -43,12 +43,12 @@
 
       <div class="header-stats">
         <div class="stat-item">
-          <span class="stat-num" data-count="3">0</span>
+          <span class="stat-num" data-count="4">0</span>
           <span class="stat-label">GAMES</span>
         </div>
         <div class="stat-sep">//</div>
         <div class="stat-item">
-          <span class="stat-num" data-count="5">0</span>
+          <span class="stat-num" data-count="6">0</span>
           <span class="stat-label">VERSIONS</span>
         </div>
         <div class="stat-sep">//</div>
@@ -192,7 +192,7 @@
       </a>
 
       <!-- ── Tic Tac Toe ──────────────────────────── -->
-      <a class="game-card" href="../tic-tac-toe/index.html" data-color="green" data-tilt>
+      <a class="game-card" href="../../tic-tac-toe/index.html" data-color="green" data-tilt>
         <div class="card-scanline"></div>
         <div class="card-corner tl"></div>
         <div class="card-corner tr"></div>
@@ -250,6 +250,65 @@
         </div>
       </a>
 
+      <!-- ── Memory Matrix ──────────────────────────── -->
+      <a class="game-card" href="../memory-game/index.html" data-color="purple" data-tilt>
+        <div class="card-scanline"></div>
+        <div class="card-corner tl"></div>
+        <div class="card-corner tr"></div>
+        <div class="card-corner bl"></div>
+        <div class="card-corner br"></div>
+
+        <div class="card-icon-badge">
+          <div class="icon-ring"></div>
+          <span class="icon-emoji">🃏</span>
+        </div>
+
+        <div class="card-preview preview-memory">
+          <div class="preview-label">// PREVIEW</div>
+          <div class="mem-anim">
+            <div class="mem-grid" style="display:grid;grid-template-columns:repeat(3,30px);grid-template-rows:repeat(3,30px);gap:4px;">
+              <div class="mem-card is-face matched"   style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;">🚀</div>
+              <div class="mem-card is-back"           style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;">?</div>
+              <div class="mem-card is-face matched"   style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;">🚀</div>
+              <div class="mem-card is-back"           style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;">?</div>
+              <div class="mem-card is-back"           style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;">?</div>
+              <div class="mem-card is-face matched"   style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;">💎</div>
+              <div class="mem-card is-back"           style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;">?</div>
+              <div class="mem-card is-face matched"   style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;">💎</div>
+              <div class="mem-card is-back"           style="display:flex;align-items:center;justify-content:center;width:30px;height:30px;">?</div>
+            </div>
+            <div class="mem-status">MATCH FOUND!</div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-meta-row">
+            <span class="card-version-tag">MEMORY · V01</span>
+            <span class="card-date">APR 2026</span>
+          </div>
+          <h2 class="card-name">Memory Matrix</h2>
+          <p class="card-desc">Flip, match, and memorise. Four difficulty levels with a live timer, star rating, and Web Audio sound effects.</p>
+
+          <div class="card-tech-row">
+            <span class="tech-pill">HTML5</span>
+            <span class="tech-pill">SCSS</span>
+            <span class="tech-pill">JS</span>
+            <span class="tech-pill">Web Audio</span>
+          </div>
+
+          <div class="card-features-list">
+            <div class="cf"><span class="cf-dot"></span>4 difficulties · 8–24 pairs</div>
+            <div class="cf"><span class="cf-dot"></span>Star rating + live timer</div>
+            <div class="cf"><span class="cf-dot"></span>SOLID architecture</div>
+          </div>
+        </div>
+
+        <div class="card-cta">
+          <span>LAUNCH GAME</span>
+          <span class="cta-icon">↗</span>
+        </div>
+      </a>
+
     </section>
 
     <!-- ══ CREDENTIALS ══════════════════════════════ -->
@@ -293,10 +352,41 @@
         </a>
 
         <!-- Email -->
-        <a class="social-link sl-email" href="mailto:mahmoudawad112001@gmail.com" data-label="Email">
+        <a class="social-link sl-email" href="/cdn-cgi/l/email-protection#a5c8c4cdc8cad0c1c4d2c4c1949497959594e5c2c8c4ccc98bc6cac8" data-label="Email">
           <svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
         </a>
 
+      </div>
+
+      <!-- Instructors -->
+      <div class="instructors-block">
+        <div class="instr-label">// INSTRUCTORS</div>
+        <div class="instr-row">
+          <div class="instr-item">
+            <span class="instr-subject">Basic JS</span>
+            <span class="instr-name">Eng. Omar Mosleh</span>
+          </div>
+          <div class="instr-sep">·</div>
+          <div class="instr-item">
+            <span class="instr-subject">RWD + SCSS + Bootstrap</span>
+            <span class="instr-name">Eng. Omar Waled</span>
+          </div>
+          <div class="instr-sep">·</div>
+          <div class="instr-item">
+            <span class="instr-subject">Advanced JS</span>
+            <span class="instr-name">Eng. Nadia Saleh</span>
+          </div>
+          <div class="instr-sep">·</div>
+          <div class="instr-item">
+            <span class="instr-subject">TypeScript</span>
+            <span class="instr-name">Eng. Yehia ElKosh</span>
+          </div>
+          <div class="instr-sep">·</div>
+          <div class="instr-item">
+            <span class="instr-subject">Git &amp; GitHub</span>
+            <span class="instr-name">Eng. Noha Salah</span>
+          </div>
+        </div>
       </div>
 
       <div class="footer-copy">
