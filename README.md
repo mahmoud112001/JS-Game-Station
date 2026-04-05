@@ -4,8 +4,8 @@
 
 <br/>
 
-[![Live Demo](https://img.shields.io/badge/▶_PLAY_NOW-Live_Demo-f7df1e?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/Hangman_web_project/)
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-100000?style=for-the-badge&logo=github&logoColor=white&labelColor=07080d)](https://github.com/mahmoud112001/Hangman_web_project)
+[![Live Demo](https://img.shields.io/badge/▶_PLAY_NOW-Live_Demo-f7df1e?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/JS-Game-Station/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-100000?style=for-the-badge&logo=github&logoColor=white&labelColor=07080d)](https://github.com/mahmoud112001/JS-Game-Station)
 [![ITI](https://img.shields.io/badge/ITI-ICC_·_MEARN_Track-00d4ff?style=for-the-badge&labelColor=07080d)](https://iti.gov.eg)
 
 <br/>
@@ -57,7 +57,7 @@
 
 ## Landing Page
 
-> **[🔗 mahmoud112001.github.io/Hangman_web_project](https://mahmoud112001.github.io/Hangman_web_project/)**
+> **[🔗 mahmoud112001.github.io/JS-Game-Station](https://mahmoud112001.github.io/JS-Game-Station/)**
 
 The landing page is the entry point to the entire collection. It uses a **Retro Arcade × Cyberpunk Terminal** design language with full interactivity.
 
@@ -98,7 +98,7 @@ The landing page is the entry point to the entire collection. It uses a **Retro 
 
 > *"Where it all began. Raw, minimal, and pure."*
 
-[![Play](https://img.shields.io/badge/▶_Play-The_Scaffold-00d4ff?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/Hangman_web_project/v1/)
+[![Play](https://img.shields.io/badge/▶_Play-The_Scaffold-00d4ff?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/JS-Game-Station/v1/)
 
 The **original Hangman** — a single self-contained HTML file with a clean light theme and classic gameplay.
 
@@ -139,7 +139,7 @@ v1/
 
 > *"Reborn in darkness. Harder, smarter, alive with animation."*
 
-[![Play](https://img.shields.io/badge/▶_Play-Gallows_Noir-f7df1e?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/Hangman_web_project/v2/)
+[![Play](https://img.shields.io/badge/▶_Play-Gallows_Noir-f7df1e?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/JS-Game-Station/v2/)
 
 A **complete redesign** of the original — dark animated cyberpunk theme, 3 difficulty levels, persistent leaderboard, and SVG hangman figure.
 
@@ -186,7 +186,7 @@ v2/
 
 > *"Three in a row wins it all. Challenge a friend or face an unbeatable AI."*
 
-[![Play](https://img.shields.io/badge/▶_Play-Grid_Wars-39ff14?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/Hangman_web_project/tic-tac-toe/)
+[![Play](https://img.shields.io/badge/▶_Play-Grid_Wars-39ff14?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/JS-Game-Station/tic-tac-toe/)
 
 The most technically advanced game in the collection — built with **TypeScript**, **SCSS**, and **Vite**, featuring a true **Minimax algorithm** AI that cannot be beaten on Hard mode.
 
@@ -250,7 +250,7 @@ tic-tac-toe/
 
 > *"Flip it. Match it. Remember everything."*
 
-[![Play](https://img.shields.io/badge/▶_Play-Memory_Matrix-9d00ff?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/Hangman_web_project/memory-game/)
+[![Play](https://img.shields.io/badge/▶_Play-Memory_Matrix-9d00ff?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/JS-Game-Station/memory-game/)
 
 A **premium memory card game** built with vanilla JS, SCSS, and the Web Audio API — featuring 4 difficulty levels, a live timer, star rating, and synthesised sound effects with zero audio files.
 
@@ -373,7 +373,7 @@ Landing v3      → Canvas API · IntersectionObserver · custom cursor · progr
 ## File Structure
 
 ```
-Hangman_web_project/
+JS-Game-Station/
 │
 ├── 📄 index.html              ← Root redirect → landing page
 ├── 📄 README.md               ← This file
@@ -592,7 +592,7 @@ After adding the Memory Matrix card as the 4th game, the 3-column grid broke the
 
 *JS Game Station · ITI ICC Program · Full-Stack MEARN Track · Alexandria · 2026*
 
-[![Portfolio](https://img.shields.io/badge/🌐_Portfolio-Visit_Now-f7df1e?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/Hangman_web_project/)
+[![Portfolio](https://img.shields.io/badge/🌐_Portfolio-Visit_Now-f7df1e?style=for-the-badge&labelColor=07080d)](https://mahmoud112001.github.io/JS-Game-Station/)
 [![GitHub](https://img.shields.io/badge/GitHub-@mahmoud112001-100000?style=for-the-badge&logo=github&labelColor=07080d)](https://github.com/mahmoud112001)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&labelColor=07080d)](https://www.linkedin.com/in/mahmoud-awad-795b02203/)
 
